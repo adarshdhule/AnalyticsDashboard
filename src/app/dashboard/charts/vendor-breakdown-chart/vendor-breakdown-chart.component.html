@@ -1,0 +1,31 @@
+<div class="dashboard-grid">
+  <div class="dashboard-row top-row card-header justify-between">
+    <div class="breakdown-chart-heading">
+      <div class="icon-circle">
+        <i class="ti ti-api-app"></i>
+      </div>
+      <div>
+        <h3>Vendor breakdown</h3>
+        <p>Keep track of vendors and their security ratings.</p>
+      </div>
+    </div>
+    <i class="ti ti-dots-vertical three-dots"></i>
+  </div>
+
+  <div class="dashboard-row middle-row">
+    <apx-chart [series]="vendorBreakdownChart.series" [chart]="vendorBreakdownChart.chart"
+      [xaxis]="vendorBreakdownChart.xaxis" [yaxis]="vendorBreakdownChart.yaxis"
+      [plotOptions]="vendorBreakdownChart.plotOptions" [dataLabels]="vendorBreakdownChart.dataLabels"
+      [stroke]="vendorBreakdownChart.stroke" [fill]="vendorBreakdownChart.fill" [legend]="vendorBreakdownChart.legend">
+
+    </apx-chart>
+  </div>
+
+  <div class="dashboard-row bottom-row card-footer">
+    <button class="view-report-btn">View full report</button>
+    
+
+  </div>
+  
+
+</div>

@@ -1,0 +1,120 @@
+
+
+
+:host {
+    display: block;
+    padding: 0;
+    font-family: 'Manrope', sans-serif;
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0;
+    }
+  
+    p {
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin: 0;
+    }
+  
+    i {
+      font-size: 1.2rem;
+      color: #9ca3af;
+      cursor: pointer;
+    }
+  }
+  
+  .card-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 0.5rem;
+  
+    .view-report-btn {
+      padding: 0.4rem 0.8rem;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      background-color: white;
+      color: #111827;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: background 0.2s;
+  
+      &:hover {
+        background: #f9fafb;
+      }
+    }
+  }
+
+
+  .dashboard-grid {
+    display: grid;
+    grid-template-rows: auto 1fr auto; 
+    height: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .dashboard-row {
+    padding: 1.5rem 1rem 1rem 1.5rem;
+    font-family: 'Manrope', sans-serif;
+  
+    &.top-row {
+      border-bottom: 1px solid #E5E7EB;
+      height: 4rem;
+      .three-dots{
+        margin-top: -40px;
+      }
+    }
+  
+    &.middle-row {
+      background-color: #fff;
+    }
+  
+    &.bottom-row {
+      border-top: 1px solid #E5E7EB;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      .view-report-btn{
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        height: 2.5rem;
+      }
+    }
+  }
+
+  .icon-circle {
+    width: 50px;
+    height: 50px;
+    background-color: #000000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    i{
+        background-color: #000000;
+        color: #fff;
+    }
+    
+  }
+
+  .breakdown-chart-heading{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  

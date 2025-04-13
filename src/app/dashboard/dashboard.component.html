@@ -1,0 +1,71 @@
+<div class="layout">
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <div class="logo">
+            <i class="ti ti-ad"></i>
+        </div>
+
+        <!-- Top nav group -->
+        <ul class="nav-links top-links">
+            <li title="Home">
+                <i class="ti ti-home icon"></i>
+            </li>
+            <li class="active" title="Dashboard">
+                <i class="ti ti-layout-dashboard icon"></i>
+            </li>
+            <li title="Vendors">
+                <i class="ti ti-building icon"></i>
+            </li>
+            <li title="Teams">
+                <i class="ti ti-users icon"></i>
+            </li>
+            <li title="Reports">
+                <i class="ti ti-chart-pie icon"></i>
+            </li>
+            <li title="Calendar">
+                <i class="ti ti-calendar icon"></i>
+            </li>
+        </ul>
+
+        <!-- Bottom nav group -->
+        <ul class="nav-links bottom-links">
+            <li title="Help">
+                <i class="ti ti-help icon"></i>
+            </li>
+            <li title="Settings">
+                <i class="ti ti-settings icon"></i>
+            </li>
+            <li class="user-avatar" title="User">
+                <img src="https://i.pravatar.cc/" alt="User" />
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <h1>Welcome back, Adarsh</h1>
+            <div class="dashboard-actions">
+                <span><i class="ti ti-search"></i></span>                 
+                <button><i class="ti ti-adjustments-horizontal"></i> Customize</button>
+                <button><i class="ti ti-cloud-down"></i> Export</button>
+            </div>
+        </header>
+
+        <!-- Charts Section -->
+        <section class="dashboard-charts">
+            <div class="chart-card">
+                <app-vendor-breakdown-chart></app-vendor-breakdown-chart>
+            </div>
+            <div class="chart-card">
+                <app-vendors-monitored-chart></app-vendors-monitored-chart>
+            </div>
+        </section>
+
+        <!-- Table Section -->
+        <section class="dashboard-table">
+            <app-team-table></app-team-table>
+        </section>
+    </div>
+</div>

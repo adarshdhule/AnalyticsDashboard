@@ -1,0 +1,124 @@
+<div class="table-container">
+  <div class="table-header">
+    <div class="header-title">
+      <h3>Team Members</h3>
+      <span class="users-number">{{data.length}} users</span>
+    </div>
+    <i class="ti ti-dots-vertical three-dots"></i>
+  </div>
+  <table>
+    <thead class="headers">
+      <tr>
+        <th>
+          <label class="custom-checkbox">
+            <input 
+              type="checkbox" 
+              (change)="onSelectAllChange($event)"
+              class="hidden-checkbox"
+            >
+            <span class="checkbox-icon"></span>
+          </label>
+        <th *ngFor="let col of columns">{{ col.column_name }}
+          <span *ngIf="col.column_name=='Status'"><i class="ti ti-arrow-down"></i></span>
+          <span *ngIf="col.column_name=='Role'"><i class="ti ti-help"></i></span>
+        </th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of pagedData" [class.hovered]="true">
+        <td>
+          <label class="custom-checkbox">
+            <input 
+              type="checkbox" 
+              (change)="toggleRowSelection(user.id)"
+              class="hidden-checkbox"
+              [checked]="selectedRows.has(user.id)"
+            >
+            <span class="checkbox-icon"></span>
+          </label>
+        </td>
+        <td *ngFor="let col of columns">
+          <!-- Name -->
+          <ng-container *ngIf="col.type === 'name'">
+            <div class="name-cell">
+              <img class="avatar-img" [src]="'https://i.pravatar.cc/40?u=' + user.email" alt="User avatar" />
+              <div class="name-email">
+                <div class="name">{{ user.name.first_name }} {{ user.name.last_name }}</div>
+                <div class="email">{{ user.name.handle }}</div>
+              </div>
+            </div>
+          </ng-container>
+
+          <!-- Status or Text -->
+          <ng-container *ngIf="col.type === 'text' || col.type === 'status'">
+            <span class="status-role" [ngStyle]="getStatusStyles(user[col.column_key])">
+              <span class="dot" [ngStyle]="getDotStyles(user[col.column_key])" *ngIf="col.type === 'status'"></span>
+              <span class="status-text" *ngIf="col.type === 'status'">{{ user[col.column_key] }}</span>
+              <span class="role-text" *ngIf="col.type === 'text'">{{ user[col.column_key] }}</span>
+            </span>
+            
+          </ng-container>
+
+          <!-- License Use -->
+          <ng-container *ngIf="col.type === 'progress'">
+            <div class="progress-bar">
+              <div class="progress-fill" [style.width.%]="user[col.column_key]"></div>
+              
+            </div>
+            <span class="progress-bar-text">{{ user[col.column_key] }}%</span>
+          </ng-container>
+
+          <!-- Tags -->
+          <ng-container *ngIf="col.type === 'tags'">
+            <span *ngFor="let tag of user[col.column_key]"
+              class="tag"
+              [ngStyle]="getTagStyles(tag)">
+              {{ tag.value }}
+            </span>
+          </ng-container>
+        </td>
+
+        <!-- Action Buttons -->
+        <td>
+          <button (click)="opendeletePopup(user.id, user.name.first_name)" class="action-buttons"><i class="ti ti-trash"></i></button>
+          <button (click)="openPopup(user)" class="action-buttons"><i class="ti ti-pencil"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Popup -->
+  <div *ngIf="showPopup" class="popup-overlay">
+    <div class="popup">
+      <p>You selected: <strong>{{ popupName }}</strong></p>
+      <button class="close-button" (click)="closePopup()">Close</button>
+    </div>
+  </div>
+  <!--Delete Popup -->
+
+  <div *ngIf="showDeletePopup" class="popup-overlay">
+    <div class="popup">
+      <p>Are you sure you want to delete {{deleteName}}?</p>
+      <div class="delete-buttons">
+        <button class="delete-button" (click)="deleteUser()">Delete</button>
+        <button class="cancel-button" (click)="closeDeletePopup()">Cancel</button>
+      </div>
+      
+    </div>
+  </div>
+  <div class="pagination">
+    <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+    <div class="page-numbers">
+      <button
+      *ngFor="let page of [].constructor(totalPages()); let i = index"
+      [class.active]="currentPage === i + 1"
+      (click)="goToPage(i + 1)">
+      {{ i + 1 }}
+    </button>
+    </div>
+    
+  
+    <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages()">Next</button>
+  </div>
+</div>

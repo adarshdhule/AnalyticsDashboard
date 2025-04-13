@@ -1,0 +1,41 @@
+<div class="dashboard-grid">
+    <div class="dashboard-row top-row card-header justify-between">
+        <div class="breakdown-chart-heading">
+            <div>
+                <h3>Vendors monitored</h3>
+                <p>You're using 80% of available spots.</p>
+            </div>
+        </div>
+        <i class="ti ti-dots-vertical three-dots"></i>
+    </div>
+
+    <div class="dashboard-row middle-row">
+        
+
+        <div class="chart-details">
+            <div class="chart">
+                <apx-chart class="radial-chart"  [series]="chartOptions.series" [chart]="chartOptions.chart" [stroke]="chartOptions.stroke"
+                [fill]="chartOptions.fill"
+                [plotOptions]="chartOptions.plotOptions"></apx-chart> 
+                <div class="trend">
+                    <i class="ti ti-trending-up trend-icon"></i>
+                    <span class="trend-text">10%</span>
+                </div>
+            </div>
+                    
+            <div class="title">You've almost reached your limit</div>
+            <div class="subtext">
+                You have used 80% of your available spots.
+            </div>
+            <div class="subtext">Upgrade plan to monitor more vendors.</div>
+        </div>
+        
+    </div>
+
+    <div class="dashboard-row bottom-row card-footer">
+        <button class="view-report-btn">
+            <i class="ti ti-bolt"></i>
+            <span>Upgrade plan</span>
+        </button>
+    </div>
+</div>
